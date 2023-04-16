@@ -4,22 +4,26 @@
   </header>
   <form action="">
     <label for="pensamento">Pensamento</label>
-    <input type="textarea" class="input" id="pensamento" name="pensamento" placeholder="Digite seu pensamento aqui"
-      [value]="pensamento.conteudo"> <!-- Property Binding (Direção do TS para o HTML) -->
-    <!-- Utilizar a propriedade value e os colchetes para o Angular encontrar o conteúdo corretamente 
+    <!-- <input type="textarea" class="input" id="pensamento" name="pensamento" placeholder="Digite seu pensamento aqui"
+      [value]="pensamento.conteudo"> -->
+    <!-- Property Binding (Direção do TS para o HTML) -->
+    <!-- Utilizar a propriedade value e os colchetes para o Angular encontrar o conteúdo corretamente
          e renderizar o conteúdo do objeto pensamento na tela conhecido como Property Binding
          (Lembrando que não é possível utilizar os 2 tipos de property binding juntos) -->
     <!-- Utilizei tecla SHIFT + ALT + Seta para baixo para duplicar o bloco label abaixo -->
+    <!-- Abaixo utilizado a Diretiva Bidirecional ngModel -->
+    <input type="textarea" class="input" id="pensamento" name="pensamento" placeholder="Digite seu pensamento aqui"
+      [(ngModel)]="pensamento.conteudo">
     <label for="autoria">Autoria ou fonte</label>
     <!-- Utilizei CTRL + D para ir selecionando as palavras iguais "pensamento" e substitui por autoria -->
     <input type="text" class="input" id="autoria" name="autoria" placeholder="Digite a autoria ou fonte"
-      [value]="pensamento.autoria">
+      [(ngModel)]="pensamento.autoria">
     <label for="modelo">Selecione o modelo do card:</label>
     <div class="container-radio">
       <!-- Modelo 1 -->
       <div class="radio-modelo">
         <label for="modelo1">
-          <input type="radio" id="modelo1" value="modelo1" name="modelo-card">
+          <input type="radio" id="modelo1" value="modelo1" name="modelo-card" [(ngModel)]="pensamento.modelo">
           <div class="custom-radio">
             <span></span>
           </div>
@@ -30,7 +34,7 @@
           <img src="../../../../assets/imagens/modelo1.png" alt="Aspas azuis">
           <p class="conteudo">{{ pensamento.conteudo }}</p>
           <!-- Aqui não tenho uma propriedade para adicionar dentro da tag p, logo, devo utilizar outra
-               sintaxe de Property Binding, que neste caso, será o uso de chaves duplas para renderizar 
+               sintaxe de Property Binding, que neste caso, será o uso de chaves duplas para renderizar
                o conteúdo desejado. Essa forma se chama Interpolação (Direção do TS para o HTML) -->
           <p class="autoria"><b>{{ pensamento.autoria }}</b></p>
         </div>
@@ -38,7 +42,7 @@
       <!-- Modelo 2 -->
       <div class="radio-modelo">
         <label for="modelo2">
-          <input type="radio" id="modelo2" value="modelo2" name="modelo-card">
+          <input type="radio" id="modelo2" value="modelo2" name="modelo-card" [(ngModel)]="pensamento.modelo">
           <div class="custom-radio">
             <span></span>
           </div>
@@ -54,7 +58,7 @@
       <!-- Modelo 3 -->
       <div class="radio-modelo">
         <label for="modelo3">
-          <input type="radio" id="modelo3" value="modelo3" name="modelo-card">
+          <input type="radio" id="modelo3" value="modelo3" name="modelo-card" [(ngModel)]="pensamento.modelo">
           <div class="custom-radio">
             <span></span>
           </div>
@@ -69,8 +73,10 @@
       </div>
     </div>
     <div class="acoes">
-      <button class="botao">Salvar</button>
-      <button class="botao">Cancelar</button>
+      <!-- Utilizado o Event Binding através do uso de parênteses para capturar o clique no botão
+           essa forma possui a direção do HTML para o TS -->
+      <button (click)="criarPensamento()" class="botao">Salvar</button>
+      <button (click)="cancelar()" class="botao">Cancelar</button>
     </div>
   </form>
 </section>
