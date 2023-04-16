@@ -8,16 +8,16 @@ import { Component, OnInit } from '@angular/core';
 export class ListarPensamentoComponent implements OnInit {
   // Este componente pai passa as informações para o componente filho
   listaPensamentos = [
-    {
-    conteudo: 'Aprendendo Angular com Cida Luna',
-    autoria: 'Dev Cida',
-    modelo: 'modelo2'
-    },
-    {
-      conteudo: 'Teste objeto declarado no componente pai',
-      autoria: 'Componente pai',
-      modelo: 'modelo1'
-      }
+    // {
+    // conteudo: 'Aprendendo Angular com Cida Luna',
+    // autoria: 'Dev Cida',
+    // modelo: 'modelo2'
+    // },
+    // {
+    //   conteudo: 'Teste objeto declarado no componente pai',
+    //   autoria: 'Componente pai',
+    //   modelo: 'modelo1'
+    //   }
   ];
 
   constructor() { }
