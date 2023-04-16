@@ -1,5 +1,7 @@
 <!-- Utilizado Interpolação para recuperar o modelo do TS e passar para o HTML -->
-<div class="pensamento {{ pensamento.modelo }} ff-roboto-mono pensamento-p">
+<div class="pensamento {{ pensamento.modelo }} ff-roboto-mono" [ngClass]="larguraPensamento()">
+  <!-- Ao utilizar a diretiva [ngClass] estamos delegando ao TS adicionar a classe CSS que atende
+       ao tamanho do texto inserido, ou seja, troca o estilo de forma dinâmica -->
   <img src="../../../../assets/imagens/{{ pensamento.modelo }}.png" alt="Aspas coloridas">
   <p class="conteudo">{{ pensamento.conteudo }}</p>
   <p class="autoria"><b>{{ pensamento.autoria }}</b></p>
