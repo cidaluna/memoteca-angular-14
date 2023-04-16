@@ -5,11 +5,13 @@
   <form action="">
     <label for="pensamento">Pensamento</label>
     <input type="textarea" class="input" id="pensamento" name="pensamento" placeholder="Digite seu pensamento aqui"
-      value="pensamento.conteudo">
+      [value]="pensamento.conteudo"> <!-- Property Binding -->
+    <!-- Utilizar os colchetes para o Angular encontrar o conteúdo corretamente para renderizar -->
     <!-- Utilizei tecla SHIFT + ALT + Seta para baixo para duplicar o bloco label abaixo -->
     <label for="autoria">Autoria ou fonte</label>
     <!-- Utilizei CTRL + D para ir selecionando as palavras iguais "pensamento" e substitui por autoria -->
-    <input type="text" class="input" id="autoria" name="autoria" placeholder="Digite a autoria ou fonte">
+    <input type="text" class="input" id="autoria" name="autoria" placeholder="Digite a autoria ou fonte"
+      [value]="pensamento.autoria">
     <label for="modelo">Selecione o modelo do card:</label>
     <div class="container-radio">
       <!-- Modelo 1 -->
