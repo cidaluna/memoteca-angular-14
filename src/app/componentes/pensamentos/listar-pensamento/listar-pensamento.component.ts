@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Pensamento } from '../pensamento';
+import { PensamentoService } from '../pensamento.service';
 
 @Component({
   selector: 'app-listar-pensamento',
@@ -12,9 +13,15 @@ export class ListarPensamentoComponent implements OnInit {
   // vazio pois os dados virão agora através do arquivo db.json que simula uma API Backend Json Server.
   listaPensamentos: Pensamento[] = [];
 
-  constructor() { }
+  // Após a criação do PensamentoService, posso consumir os métodos criados lá.
+  constructor(private service: PensamentoService) { }
 
   ngOnInit(): void {
+    // Já quero inicializar o componente de listagem e já aviso que sou um subscriber
+    // ou seja, retorno o que o Observable do Service me informar
+    this.service.listar().subscribe((listaPensamentoDoObservable) => {
+      this.listaPensamentos = listaPensamentoDoObservable
+    })
   }
 
 }
