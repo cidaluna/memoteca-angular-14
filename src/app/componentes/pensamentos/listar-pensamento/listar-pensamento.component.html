@@ -4,6 +4,11 @@
     <button routerLink="/criarPensamento" class="botao">Adicionar pensamento</button>
   </header>
   <div class="mural">
-    <app-pensamento></app-pensamento>
+    <!-- Utilizado diretiva *ngFor para percorrer a lista de Pensamentos e renderizar cada um na tela -->
+    <div *ngFor="let item of listaPensamentos">
+      <app-pensamento [pensamento]="item"></app-pensamento>
+      <!-- O objeto pensamento no filho recebe aqui os colchetes e a variavel let item poderia chamar pensamento
+       mantive item por uma questao didática para deixar claro quem é quem  -->
+    </div>
   </div>
 </section>
