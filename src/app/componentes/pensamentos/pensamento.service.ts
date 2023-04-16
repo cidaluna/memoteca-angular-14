@@ -26,4 +26,9 @@ export class PensamentoService {
     return this.http.get<Pensamento[]>(this.API)
   }
 
+  criar(pensamento: Pensamento): Observable<Pensamento>{
+    // Para cadastrar utilizamos o método POST, precisamos da URL da API Backend e dos dados do pensamento
+    return this.http.post<Pensamento>(this.API, pensamento)
+  }
+
 }
