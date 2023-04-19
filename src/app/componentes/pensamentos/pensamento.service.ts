@@ -22,8 +22,10 @@ export class PensamentoService {
 
   // Este método listar por padrão retornará um Observable, ou seja, sempre que houver uma mudança
   // nos dados ele irá avisar quem esta interessado em saber (os interessados são os subscribers)
-  listar(): Observable<Pensamento[]>{
-    return this.http.get<Pensamento[]>(this.API)
+  // Implementado a paginação que o Json Server oferece: GET /posts?_page=7&_limit=20
+  listar(pagina: number): Observable<Pensamento[]>{
+    const itensPorPagina = 20;
+    return this.http.get<Pensamento[]>(`${this.API}?_page=${pagina}&_limit=${itensPorPagina}`)
   }
 
   criar(pensamento: Pensamento): Observable<Pensamento>{

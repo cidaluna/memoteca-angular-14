@@ -12,6 +12,7 @@ export class ListarPensamentoComponent implements OnInit {
   // Após criar a Interface Pensamento, declaramos a propriedade ListaPensamentos como um array e inicializamos
   // vazio pois os dados virão agora através do arquivo db.json que simula uma API Backend Json Server.
   listaPensamentos: Pensamento[] = [];
+  paginaAtual: number = 1;
 
   // Após a criação do PensamentoService, posso consumir os métodos criados lá.
   constructor(private service: PensamentoService) { }
@@ -19,7 +20,8 @@ export class ListarPensamentoComponent implements OnInit {
   ngOnInit(): void {
     // Já quero inicializar o componente de listagem e já aviso que sou um subscriber
     // ou seja, retorno o que o Observable do Service me informar
-    this.service.listar().subscribe((listaPensamentoDoObservable) => {
+    // Agora o metodo listar precisa do número da página como parâmetro
+    this.service.listar(this.paginaAtual).subscribe((listaPensamentoDoObservable) => {
       this.listaPensamentos = listaPensamentoDoObservable
     })
   }
