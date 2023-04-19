@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Pensamento } from '../pensamento';
 import { PensamentoService } from '../pensamento.service';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-criar-pensamento',
@@ -30,8 +30,8 @@ export class CriarPensamentoComponent implements OnInit {
     // por debaixo dos panos atribui os controles aos campos, de forma mais clean.
     this.formulario = this.formBuilder.group({
       // Adicionando os atributos do formulário
-      conteudo: ['Formulário reativo'],
-      autoria: ['Angular'],
+      conteudo: ['', Validators.compose([Validators.required, Validators.pattern(/(.|\s)*\S(.|\s)*/)])],
+      autoria: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
       modelo: ['modelo1']
     })
   }
@@ -39,10 +39,14 @@ export class CriarPensamentoComponent implements OnInit {
   criarPensamento(){
     // Chama o service, cria o card com o que está sendo digitado,
     // e ao clicar no botão Salvar, o usuário será redirecionado para a listagem de pensamentos
-    this.service.criar(this.formulario.value).subscribe(() => {
-      this.router.navigate(['/listarPensamento'])
-    })
+    console.log(this.formulario.status)
+    if(this.formulario.valid){
+      this.service.criar(this.formulario.value).subscribe(() => {
+        this.router.navigate(['/listarPensamento'])
+      }
+    )}
   }
+  
 
   cancelar(){
     this.router.navigate(['/listarPensamento'])
