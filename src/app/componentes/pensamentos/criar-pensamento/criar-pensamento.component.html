@@ -16,10 +16,22 @@
     <!-- Abaixo utilizado a Diretiva Bidirecional ngModel -->
     <input type="textarea" class="input" id="pensamento" formControlName="conteudo"
       placeholder="Digite seu pensamento aqui">
-    <!-- Removido o uso do [(ngModel)] que é bidirecional, pois o FormBuilder já faz o mesmo -->
+    <!-- Removido o uso do [(ngModel)] do input de conteudo que é bidirecional, pois o FormBuilder já faz o mesmo -->
+    <div class="mensagem__erro" *ngIf="formulario.get('conteudo')?.errors &&
+         formulario.get('conteudo')?.touched">
+      <p>Pensamento é obrigatório</p>
+    </div>
     <label for="autoria">Autoria ou fonte</label>
     <!-- Utilizei CTRL + D para ir selecionando as palavras iguais "pensamento" e substitui por autoria -->
     <input type="text" class="input" id="autoria" formControlName="autoria" placeholder="Digite a autoria ou fonte">
+    <div class="mensagem__erro" *ngIf="formulario.get('autoria')?.errors?.['required'] &&
+     formulario.get('autoria')?.touched">
+      <p>Autoria é obrigatória</p>
+    </div>
+    <div class=" mensagem__erro" *ngIf="formulario.get('autoria')?.errors?.['minlength'] &&
+     formulario.get('autoria')?.touched">
+      <p>Autoria precisa ter no mínimo 3 caracteres!</p>
+    </div>
     <label for="modelo">Selecione o modelo do card:</label>
     <div class="container-radio">
       <!-- Modelo 1 -->

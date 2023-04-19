@@ -39,7 +39,8 @@ export class CriarPensamentoComponent implements OnInit {
   criarPensamento(){
     // Chama o service, cria o card com o que está sendo digitado,
     // e ao clicar no botão Salvar, o usuário será redirecionado para a listagem de pensamentos
-    console.log(this.formulario.status)
+    // console.log(this.formulario.status)
+    console.log(this.formulario.get('autoria')?.errors)
     if(this.formulario.valid){
       this.service.criar(this.formulario.value).subscribe(() => {
         this.router.navigate(['/listarPensamento'])
@@ -51,5 +52,27 @@ export class CriarPensamentoComponent implements OnInit {
   cancelar(){
     this.router.navigate(['/listarPensamento'])
   }
+/*
+Exemplo de Validators:
+Validators.min()
+  Validador que exige que o valor do controle seja maior ou igual ao número fornecido.
 
+Validators.max()
+  Validador que exige que o valor do controle seja menor ou igual ao número fornecido.
+
+Validators.requiredTrue()
+  Validador que exige que o valor do controle seja verdadeiro. Este validador é comumente usado para caixas de seleção obrigatórias.
+
+Validators.email()
+  Validador que exige que o valor do controle passe em um teste de validação de email.
+
+Validators.maxLength()
+  Validador que exige que o comprimento do valor do controle seja menor ou igual ao tamanho máximo fornecido.
+
+Validators.nullValidator()
+  Validador de valores nulos.
+
+Validators.composeAsync()
+  Compõe vários validadores assíncronos em uma única função que retorna a união dos objetos de erro individuais para o controle fornecido.
+*/
 }
