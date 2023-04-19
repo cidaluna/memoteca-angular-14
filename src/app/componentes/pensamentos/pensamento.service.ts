@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http'
 import { Pensamento } from './pensamento';
 import { Observable } from 'rxjs';
 
@@ -25,7 +25,14 @@ export class PensamentoService {
   // Implementado a paginação que o Json Server oferece: GET /posts?_page=7&_limit=20
   listar(pagina: number): Observable<Pensamento[]>{
     const itensPorPagina = 20;
-    return this.http.get<Pensamento[]>(`${this.API}?_page=${pagina}&_limit=${itensPorPagina}`)
+
+    //criando atributo parâmetros que o Backend Json Server precisa, através da classe HttpParams
+    let parametros = new HttpParams()
+    .set('_page', pagina)
+    .set('_limit', itensPorPagina)
+
+    //modo antigo return this.http.get<Pensamento[]>(`${this.API}?_page=${pagina}&_limit=${itensPorPagina}`)
+    return this.http.get<Pensamento[]>(this.API, {params: parametros})
   }
 
   criar(pensamento: Pensamento): Observable<Pensamento>{
@@ -48,4 +55,32 @@ export class PensamentoService {
     return this.http.get<Pensamento>(url)
   }
 
+
+  /*
+Conheça os outros métodos do HttpParams:
+    HttpParams.has()
+        Informa se o corpo inclui um ou mais valores para um determinado parâmetro.
+
+    HttpParams.get()
+        Recupera o primeiro valor de um parâmetro.
+
+    HttpParams.getAll()
+        Recupera todos os valores de um parâmetro.
+
+    HttpParams.keys()
+        Recupera todos os parâmetros para este corpo da requisição.
+
+    HttpParams.append()
+        Acrescenta um novo valor aos valores existentes para um parâmetro.
+
+    HttpParams.appendAll()
+        Constrói um novo corpo com valores anexados para o nome do parâmetro fornecido.
+
+    HttpParams.delete()
+        Remove um determinado valor ou todos os valores de um parâmetro.
+
+    HttpParams.toString()
+        Serializa o corpo da requisição em uma string codificada, em que os pares de chave-valor (separados por =) são separados por & s.
+
+  */
 }
