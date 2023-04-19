@@ -21,6 +21,7 @@
          formulario.get('conteudo')?.touched">
       <p>Pensamento é obrigatório</p>
     </div>
+
     <label for="autoria">Autoria ou fonte</label>
     <!-- Utilizei CTRL + D para ir selecionando as palavras iguais "pensamento" e substitui por autoria -->
     <input type="text" class="input" id="autoria" formControlName="autoria" placeholder="Digite a autoria ou fonte">
@@ -32,6 +33,11 @@
      formulario.get('autoria')?.touched">
       <p>Autoria precisa ter no mínimo 3 caracteres!</p>
     </div>
+    <div class=" mensagem__erro" *ngIf="formulario.get('autoria')?.errors?.['minusculo'] &&
+     formulario.get('autoria')?.touched">
+      <p>Esse campo aceita apenas letras minúsculas!</p>
+    </div>
+
     <label for="modelo">Selecione o modelo do card:</label>
     <div class="container-radio">
       <!-- Modelo 1 -->
@@ -90,7 +96,7 @@
     <div class="acoes">
       <!-- Utilizado o Event Binding através do uso de parênteses para capturar o clique no botão
            essa forma possui a direção do HTML para o TS -->
-      <button (click)="criarPensamento()" class="botao">Salvar</button>
+      <button [disabled]="!formulario.valid" (click)="criarPensamento()" [ngClass]="habilitarBotao()">Salvar</button>
       <button routerLink="/listarPensamento" class="botao">Cancelar</button>
     </div>
   </form>
