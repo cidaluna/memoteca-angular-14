@@ -6,7 +6,7 @@
   <p class="conteudo">{{ pensamento.conteudo }}</p>
   <p class="autoria"><b>{{ pensamento.autoria }}</b></p>
   <div class="acoes">
-    <button class="botao-favorito" routerLink="/pensamentos/favoritarPensamento/{{pensamento.id}}">
+    <button class="botao-favorito" (click)="atualizarFavoritos()">
       <img src="../../../../assets/imagens/icone-favorito-{{ mudarIconeFavorito() }}.png"
         alt="Icone de favorito {{ mudarIconeFavorito() }}">
     </button>
