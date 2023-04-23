@@ -14,6 +14,7 @@ export class ListarPensamentoComponent implements OnInit {
   listaPensamentos: Pensamento[] = [];
   paginaAtual: number = 1;
   haMaisPensamentos: boolean = true;
+  filtro: string = '';
 
   // Após a criação do PensamentoService, posso consumir os métodos criados lá.
   constructor(private service: PensamentoService) { }
@@ -22,18 +23,28 @@ export class ListarPensamentoComponent implements OnInit {
     // Já quero inicializar o componente de listagem e já aviso que sou um subscriber
     // ou seja, retorno o que o Observable do Service me informar
     // Agora o metodo listar precisa do número da página como parâmetro
-    this.service.listar(this.paginaAtual).subscribe((listaPensamentoDoObservable) => {
-      this.listaPensamentos = listaPensamentoDoObservable
+    this.service.listar(this.paginaAtual, this.filtro).subscribe((listaPensamentos) => {
+      this.listaPensamentos = listaPensamentos
     })
   }
 
   carregarMaisPensamentos(){
-    this.service.listar(++this.paginaAtual).subscribe((listaPensamentos) => {
+    this.service.listar(++this.paginaAtual, this.filtro).subscribe((listaPensamentos) => {
       // spread operator ... para listar os pensamentos da lista e acrescentar os 6 de cada página
       this.listaPensamentos.push(...listaPensamentos);
       if(!this.listaPensamentos.length){
         this.haMaisPensamentos = false;
       }
+    })
+  }
+
+  pesquisarPensamentos(){
+    //manter a paginação funcionando
+    this.haMaisPensamentos = true;
+    // sempre que o recurso de pesquisar for utilizado, a página atual recebe o valor 1
+    this.paginaAtual = 1;
+    this.service.listar(this.paginaAtual, this.filtro).subscribe((listaPensamentos)=> {
+      this.listaPensamentos = listaPensamentos
     })
   }
 

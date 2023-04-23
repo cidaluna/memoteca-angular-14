@@ -23,13 +23,19 @@ export class PensamentoService {
   // Este método listar por padrão retornará um Observable, ou seja, sempre que houver uma mudança
   // nos dados ele irá avisar quem esta interessado em saber (os interessados são os subscribers)
   // Implementado a paginação que o Json Server oferece: GET /posts?_page=7&_limit=20
-  listar(pagina: number): Observable<Pensamento[]>{
+  listar(pagina: number, filtro: string): Observable<Pensamento[]>{
     const itensPorPagina = 6;
 
     //criando atributo parâmetros que o Backend Json Server precisa, através da classe HttpParams
     let parametros = new HttpParams()
-    .set('_page', pagina)
-    .set('_limit', itensPorPagina)
+    .set("_page", pagina)
+    .set("_limit", itensPorPagina)
+
+    // trim remove espaços vazios da string
+    if(filtro.trim().length > 2){
+      // Este q é de query e está definido no Json Server
+      parametros = parametros.set("q", filtro)
+    }
 
     //modo antigo return this.http.get<Pensamento[]>(`${this.API}?_page=${pagina}&_limit=${itensPorPagina}`)
     return this.http.get<Pensamento[]>(this.API, {params: parametros})

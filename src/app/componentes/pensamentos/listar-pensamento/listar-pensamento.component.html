@@ -1,13 +1,20 @@
 <section class="container">
   <header class="header d-flex">
+    <div class="buscar-pensamentos">
+      <input type="search" class="filtro" placeholder="O que você procura?" [(ngModel)]="filtro"
+        (keyup)="pesquisarPensamentos()" autofocus>
+      <!-- O evento keyup ocorre quando a pessoa libera uma tecla no teclado. Assim, a busca 
+          será dinâmica e os cards de pensamentos já serão mostrados de acordo com o conteúdo digitado. -->
+      <img src="../../../../assets/imagens/lupa.png" alt="Lupa azul">
+    </div>
     <h2 class="ff-inter">Meu Mural</h2>
     <button routerLink="/criarPensamento" class="botao">Adicionar pensamento</button>
   </header>
   <!-- Utilizado a diretiva *ngIf para verificar se existe pensamento a ser exibido -->
-  <div class="mural" *ngIf="listaPensamentos.length>0, else semPensamentos">
+  <div class="mural" *ngIf="listaPensamentos.length > 0; else semPensamentos">
     <!-- Utilizado diretiva *ngFor para percorrer a lista de Pensamentos e renderizar cada um na tela -->
-    <div *ngFor="let item of listaPensamentos">
-      <app-pensamento [pensamento]="item"></app-pensamento>
+    <div *ngFor="let pensamento of listaPensamentos">
+      <app-pensamento [pensamento]="pensamento"></app-pensamento>
       <!-- O objeto pensamento no filho recebe aqui os colchetes e a variavel let item poderia chamar pensamento
        mantive item por uma questao didática para deixar claro quem é quem  -->
     </div>
