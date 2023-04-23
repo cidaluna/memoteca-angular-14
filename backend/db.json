@@ -5,20 +5,20 @@
       "conteudo": "Na volta a gente compra!",
       "autoria": "Mãe",
       "modelo": "modelo2",
-      "favorito": false
+      "favorito": true
     },
     {
       "id": 4,
       "conteudo": "Vc faz TI? Conserta meu celular!",
       "autoria": "Grupo da família",
       "modelo": "modelo1",
-      "favorito": false
+      "favorito": true
     },
     {
       "conteudo": "Já tentou reiniciar o roteador?",
       "autoria": "Pessoa da operadora",
       "modelo": "modelo3",
-      "favorito": false,
+      "favorito": true,
       "id": 5
     },
     {
@@ -81,7 +81,7 @@
       "conteudo": "Mussum Ipsum, cacilds vidis litro abertis. Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Diuretics paradis num copo é motivis de denguis. Atirei o pau no gatis, per gatis num morreus. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis. Sapien in monti palavris qui num significa nadis i pareci latim.",
       "autoria": "Mussum",
       "modelo": "modelo3",
-      "favorito": false,
+      "favorito": true,
       "id": 18
     },
     {

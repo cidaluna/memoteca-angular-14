@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pensamento } from '../pensamento';
 import { PensamentoService } from '../pensamento.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-pensamento',
@@ -17,9 +18,10 @@ export class ListarPensamentoComponent implements OnInit {
   filtro: string = '';
   favoritos: boolean = false;
   listaFavoritos: Pensamento[] = [];
+  titulo: string = 'Meu Mural';
 
   // Após a criação do PensamentoService, posso consumir os métodos criados lá.
-  constructor(private service: PensamentoService) { }
+  constructor(private service: PensamentoService, private router: Router) { }
 
   ngOnInit(): void {
     // Já quero inicializar o componente de listagem e já aviso que sou um subscriber
@@ -51,10 +53,17 @@ export class ListarPensamentoComponent implements OnInit {
   }
 
   recarregarComponente(){
-    location.reload();
+    this.favoritos = false;
+    this.paginaAtual = 1;
+    // não quer o padrão de reutilização de rotas
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    // atraves da classe router podemos utilizar manipulação e recursos entre views
+    this.router.onSameUrlNavigation = 'reload'
+    this.router.navigate([this.router.url])   // representa a url atual
   }
 
   listarFavoritos(){
+    this.titulo = 'Meus Favoritos'
     this.favoritos = true
     this.haMaisPensamentos = true
     this.paginaAtual = 1

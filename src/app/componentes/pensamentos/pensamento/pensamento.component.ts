@@ -23,6 +23,12 @@ export class PensamentoComponent implements OnInit {
   // para receber informações do componente pai (listar)
   @Input() listaFavoritos: Pensamento[] = [];
 
+  /* Sobre comunicação de componentes
+   * No componente filho, é necessário decorar a propriedade que se deseja receber os dados do 
+   * componente pai com o decorator @Input. No componente pai, fazemos um property binding da 
+   * propriedade decorada com a propriedade que queremos associar.
+   */
+
   constructor(private service: PensamentoService) { }
 
   ngOnInit(): void {
