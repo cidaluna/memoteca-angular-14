@@ -9,17 +9,17 @@
     </div>
     <h2 class="ff-inter">Meu Mural</h2>
     <div class="botoes">
-      <div class="botao">Meu Mural</div>
+      <div class="botao" (click)="recarregarComponente()">Meu Mural</div>
       <div class="botao" (click)="listarFavoritos()">Meus Favoritos</div>
       <button routerLink="/criarPensamento" class="botao">Novo pensamento</button>
     </div>
 
   </header>
   <!-- Utilizado a diretiva *ngIf para verificar se existe pensamento a ser exibido -->
-  <div class="mural" *ngIf="listaPensamentos.length > 0; else semPensamentos">
+  <div class="mural" *ngIf="listaPensamentos.length > 0, else semPensamentos">
     <!-- Utilizado diretiva *ngFor para percorrer a lista de Pensamentos e renderizar cada um na tela -->
     <div *ngFor="let pensamento of listaPensamentos">
-      <app-pensamento [pensamento]="pensamento"></app-pensamento>
+      <app-pensamento [pensamento]="pensamento" [listaFavoritos]="listaFavoritos"></app-pensamento>
       <!-- O objeto pensamento no filho recebe aqui os colchetes e a variavel let item poderia chamar pensamento
        mantive item por uma questao didática para deixar claro quem é quem  -->
     </div>

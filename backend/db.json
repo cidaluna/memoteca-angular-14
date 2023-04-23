@@ -5,7 +5,7 @@
       "conteudo": "Na volta a gente compra!",
       "autoria": "Mãe",
       "modelo": "modelo2",
-      "favorito": true
+      "favorito": false
     },
     {
       "id": 4,
@@ -40,14 +40,14 @@
       "conteudo": "Esse é de laranja que parece de limão, mas tem gosto de tamarindo!",
       "autoria": "Chaves",
       "modelo": "modelo1",
-      "favorito": true
+      "favorito": false
     },
     {
       "id": 13,
       "conteudo": "Melhor professor, o fracasso é!",
       "autoria": "Mestre Yoda",
       "modelo": "modelo2",
-      "favorito": true
+      "favorito": false
     },
     {
       "conteudo": "Você não é todo mundo!",
@@ -123,7 +123,7 @@
       "conteudo": "Não fez mais que a sua obrigação!",
       "autoria": "Mãe",
       "modelo": "modelo1",
-      "favorito": false,
+      "favorito": true,
       "id": 24
     },
     {
@@ -158,7 +158,7 @@
       "conteudo": "Eu vou contar até três! ",
       "autoria": "Mãe",
       "modelo": "modelo2",
-      "favorito": false,
+      "favorito": true,
       "id": 29
     }
   ]

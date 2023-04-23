@@ -15,6 +15,8 @@ export class ListarPensamentoComponent implements OnInit {
   paginaAtual: number = 1;
   haMaisPensamentos: boolean = true;
   filtro: string = '';
+  favoritos: boolean = false;
+  listaFavoritos: Pensamento[] = [];
 
   // Após a criação do PensamentoService, posso consumir os métodos criados lá.
   constructor(private service: PensamentoService) { }
@@ -23,13 +25,13 @@ export class ListarPensamentoComponent implements OnInit {
     // Já quero inicializar o componente de listagem e já aviso que sou um subscriber
     // ou seja, retorno o que o Observable do Service me informar
     // Agora o metodo listar precisa do número da página como parâmetro
-    this.service.listar(this.paginaAtual, this.filtro).subscribe((listaPensamentos) => {
+    this.service.listar(this.paginaAtual, this.filtro, this.favoritos).subscribe((listaPensamentos) => {
       this.listaPensamentos = listaPensamentos
     })
   }
 
   carregarMaisPensamentos(){
-    this.service.listar(++this.paginaAtual, this.filtro).subscribe((listaPensamentos) => {
+    this.service.listar(++this.paginaAtual, this.filtro, this.favoritos).subscribe((listaPensamentos) => {
       // spread operator ... para listar os pensamentos da lista e acrescentar os 6 de cada página
       this.listaPensamentos.push(...listaPensamentos);
       if(!this.listaPensamentos.length){
@@ -43,16 +45,22 @@ export class ListarPensamentoComponent implements OnInit {
     this.haMaisPensamentos = true;
     // sempre que o recurso de pesquisar for utilizado, a página atual recebe o valor 1
     this.paginaAtual = 1;
-    this.service.listar(this.paginaAtual, this.filtro).subscribe((listaPensamentos)=> {
+    this.service.listar(this.paginaAtual, this.filtro, this.favoritos).subscribe((listaPensamentos)=> {
       this.listaPensamentos = listaPensamentos
     })
   }
 
+  recarregarComponente(){
+    location.reload();
+  }
+
   listarFavoritos(){
+    this.favoritos = true
     this.haMaisPensamentos = true
     this.paginaAtual = 1
-    this.service.listarPensamentosFavoritos(this.paginaAtual, this.filtro).subscribe((listarPensamentosFavoritos) => {
+    this.service.listar(this.paginaAtual, this.filtro, this.favoritos).subscribe((listarPensamentosFavoritos) => {
       this.listaPensamentos = listarPensamentosFavoritos
+      this.listaFavoritos = listarPensamentosFavoritos 
     })
   }
 }

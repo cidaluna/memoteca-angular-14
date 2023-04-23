@@ -20,6 +20,9 @@ export class PensamentoComponent implements OnInit {
     favorito: false
   }
 
+  // para receber informações do componente pai (listar)
+  @Input() listaFavoritos: Pensamento[] = [];
+
   constructor(private service: PensamentoService) { }
 
   ngOnInit(): void {
@@ -42,8 +45,11 @@ export class PensamentoComponent implements OnInit {
 
   atualizarFavoritos(){
     // preciso consumir o método criado no service, logo preciso injetar o service aqui no constructor
-    this.service.mudarFavorito(this.pensamento).subscribe();
-    console.log(this.pensamento.favorito)
+    this.service.mudarFavorito(this.pensamento).subscribe(() => {
+      // remover o (1) favorito que foi desfavoritado
+      this.listaFavoritos.splice(this.listaFavoritos.indexOf(this.pensamento), 1);
+    });
+    
   }
 
 }
