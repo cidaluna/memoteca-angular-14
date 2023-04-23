@@ -13,6 +13,8 @@
     </div>
   </div>
 </section>
+<app-botao-carregar-mais [haMaisPensamentos]="haMaisPensamentos" (click)="carregarMaisPensamentos()">
+</app-botao-carregar-mais>
 <!-- Else, utilizado o ng-template caso não exista a listaPensamentos -->
 <ng-template #semPensamentos>
   <div class="ff-inter sem-pensamentos">

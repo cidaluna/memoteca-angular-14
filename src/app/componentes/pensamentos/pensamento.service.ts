@@ -24,7 +24,7 @@ export class PensamentoService {
   // nos dados ele irá avisar quem esta interessado em saber (os interessados são os subscribers)
   // Implementado a paginação que o Json Server oferece: GET /posts?_page=7&_limit=20
   listar(pagina: number): Observable<Pensamento[]>{
-    const itensPorPagina = 20;
+    const itensPorPagina = 6;
 
     //criando atributo parâmetros que o Backend Json Server precisa, através da classe HttpParams
     let parametros = new HttpParams()

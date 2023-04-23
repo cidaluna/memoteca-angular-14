@@ -13,6 +13,7 @@ export class ListarPensamentoComponent implements OnInit {
   // vazio pois os dados virão agora através do arquivo db.json que simula uma API Backend Json Server.
   listaPensamentos: Pensamento[] = [];
   paginaAtual: number = 1;
+  haMaisPensamentos: boolean = true;
 
   // Após a criação do PensamentoService, posso consumir os métodos criados lá.
   constructor(private service: PensamentoService) { }
@@ -23,6 +24,16 @@ export class ListarPensamentoComponent implements OnInit {
     // Agora o metodo listar precisa do número da página como parâmetro
     this.service.listar(this.paginaAtual).subscribe((listaPensamentoDoObservable) => {
       this.listaPensamentos = listaPensamentoDoObservable
+    })
+  }
+
+  carregarMaisPensamentos(){
+    this.service.listar(++this.paginaAtual).subscribe((listaPensamentos) => {
+      // spread operator ... para listar os pensamentos da lista e acrescentar os 6 de cada página
+      this.listaPensamentos.push(...listaPensamentos);
+      if(!this.listaPensamentos.length){
+        this.haMaisPensamentos = false;
+      }
     })
   }
 
