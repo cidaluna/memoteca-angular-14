@@ -14,7 +14,8 @@ export class ExcluirPensamentoComponent implements OnInit {
     id: 0,
     conteudo: '',
     autoria: '',
-    modelo:''
+    modelo:'',
+    favorito: false
   }
 
   // O activetedRoute possibilita acessar metodos que fornece informações sobre determinado objeto

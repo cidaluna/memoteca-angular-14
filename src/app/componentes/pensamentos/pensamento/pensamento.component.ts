@@ -15,7 +15,8 @@ export class PensamentoComponent implements OnInit {
     id: 0,
     conteudo: 'I love Angular',
     autoria: 'Cida Luna',
-    modelo: 'modelo3'
+    modelo: 'modelo3',
+    favorito: false
   }
 
   constructor() { }
@@ -28,6 +29,14 @@ export class PensamentoComponent implements OnInit {
       return 'pensamento-g'
     }
     return 'pensamento-p'
+  }
+
+  mudarIconeFavorito(): string{
+    if(this.pensamento.favorito == false){
+      return 'inativo'
+    }else{
+      return 'ativo'
+    }
   }
 
 }

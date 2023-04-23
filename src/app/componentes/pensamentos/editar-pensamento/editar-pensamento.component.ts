@@ -28,20 +28,21 @@ export class EditarPensamentoComponent implements OnInit {
   ngOnInit(): void {
     // criando uma constante que vai representar o id
     const id = this.route.snapshot.paramMap.get('id')
-    this.service.buscarPorId(parseInt(id!)).subscribe((pensamentoDoObservable) => {
+    this.service.buscarPorId(parseInt(id!)).subscribe((pensamento) => {
       // Ao invés, de instanciar o formulário via FormGroup e FormControl, utilizado o FormBuilder que 
       // por debaixo dos panos atribui os controles aos campos, de forma mais clean.
       this.formEdit = this.formBuilder.group({
-        id: [pensamentoDoObservable.id],
-        conteudo: [pensamentoDoObservable.conteudo, Validators.compose([
+        id: [pensamento.id],
+        conteudo: [pensamento.conteudo, Validators.compose([
           Validators.required,
           Validators.pattern(/(.|\s)*\S(.|\s)*/)
         ])],
-        autoria: [pensamentoDoObservable.autoria, Validators.compose([
+        autoria: [pensamento.autoria, Validators.compose([
           Validators.required,
           Validators.minLength(3)
         ])],
-        modelo: [pensamentoDoObservable.modelo]
+        modelo: [pensamento.modelo],
+        favorito: [pensamento.favorito]
       })
     })
   }
