@@ -41,6 +41,23 @@ export class PensamentoService {
     return this.http.get<Pensamento[]>(this.API, {params: parametros})
   }
 
+  listarPensamentosFavoritos(pagina: number, filtro: string): Observable<Pensamento[]>{
+    const itensPorPagina = 6;
+    //criando atributo parâmetros que o Backend Json Server precisa, através da classe HttpParams
+    let parametros = new HttpParams()
+    .set("_page", pagina)
+    .set("_limit", itensPorPagina)
+    .set("favorito", true)
+
+    // trim remove espaços vazios da string
+    if(filtro.trim().length > 2){
+      // Este q é de query e está definido no Json Server
+      parametros = parametros.set("q", filtro)
+    }
+    return this.http.get<Pensamento[]>(this.API, {params: parametros})
+  
+  }
+
   criar(pensamento: Pensamento): Observable<Pensamento>{
     // Para cadastrar utilizamos o método POST, precisamos da URL da API Backend e dos dados do pensamento
     return this.http.post<Pensamento>(this.API, pensamento)
