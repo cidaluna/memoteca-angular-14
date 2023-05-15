@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PensamentoComponent } from './pensamento.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('PensamentoComponent', () => {
   let component: PensamentoComponent;
@@ -8,7 +9,10 @@ describe('PensamentoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PensamentoComponent ]
+      declarations: [ PensamentoComponent ],
+      imports: [ 
+        HttpClientTestingModule, // fixed No provider for HttpClient!
+      ],
     })
     .compileComponents();
 

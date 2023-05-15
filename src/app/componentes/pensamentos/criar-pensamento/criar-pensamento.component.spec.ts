@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CriarPensamentoComponent } from './criar-pensamento.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 describe('CriarPensamentoComponent', () => {
   let component: CriarPensamentoComponent;
@@ -8,7 +10,10 @@ describe('CriarPensamentoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CriarPensamentoComponent ]
+      declarations: [ CriarPensamentoComponent ],
+      imports: [ HttpClientTestingModule,
+        ReactiveFormsModule    // fixed No provider for FormBuilder!
+      ],
     })
     .compileComponents();
 
@@ -17,7 +22,7 @@ describe('CriarPensamentoComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create criar pensamento', () => {
     expect(component).toBeTruthy();
   });
 });
