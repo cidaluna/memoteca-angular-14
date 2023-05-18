@@ -1,6 +1,12 @@
 # Memoteca - Phrases, Quotes And Thoughts - Project Angular 14
 
+Memoteca Phrases, Quotes And Thoughts is an Angular 14 project, under development, where I practice CRUD concepts and unit tests. 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.3.
+
+
+
+![Página Web com um mural de frases para criar, editar ou remover pensamentos/citações](https://github.com/cidaluna/memoteca-angular-14/blob/lunabranch/src/assets/memoteca-phrases-quotes-and-thoughts-angular-14-Cida-Luna-It-Developer-Brazil.PNG)
+
 
 ## Development server
 
