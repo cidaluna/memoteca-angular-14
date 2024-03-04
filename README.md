@@ -24,7 +24,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 New `ng add angular-cli-ghpages`. 
-New `ng build --base-ref "https://cidaluna.github.io/memoteca-angular-14" `to deploy this project to GitHub Pages.
+New `ng build` to deploy this project to GitHub Pages.
 
 ## Running unit tests
 
