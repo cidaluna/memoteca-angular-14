@@ -7,8 +7,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ![Página Web com um mural de frases para criar, editar ou remover pensamentos/citações](https://github.com/cidaluna/memoteca-angular-14/blob/lunabranch/src/assets/memoteca-phrases-quotes-and-thoughts-angular-14-Cida-Luna-It-Developer-Brazil.PNG)
 
+## Back-end development server
 
-## Development server
+In backend directory run `npm install -g json-server` for a dev backend server. Then, run `json-server --watch db.json`.
+Navigate to `http://localhost:3000/`. The application will automatically reload if you change any of the source files.
+
+## Front-end development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 

@@ -24,11 +24,16 @@ export class ListarPensamentoComponent implements OnInit {
   constructor(private service: PensamentoService, private router: Router) { }
 
   ngOnInit(): void {
+    // começo chamando a listagem de pensamentos
+    this.startListagem();
+  }
+
+  startListagem(){
     // Já quero inicializar o componente de listagem e já aviso que sou um subscriber
     // ou seja, retorno o que o Observable do Service me informar
     // Agora o metodo listar precisa do número da página como parâmetro
-    this.service.listar(this.paginaAtual, this.filtro, this.favoritos).subscribe((listaPensamentos) => {
-      this.listaPensamentos = listaPensamentos
+    this.service.listar(this.paginaAtual, this.filtro, this.favoritos).subscribe((resp) => {
+      this.listaPensamentos = resp
     })
   }
 
@@ -69,7 +74,7 @@ export class ListarPensamentoComponent implements OnInit {
     this.paginaAtual = 1
     this.service.listar(this.paginaAtual, this.filtro, this.favoritos).subscribe((listarPensamentosFavoritos) => {
       this.listaPensamentos = listarPensamentosFavoritos
-      this.listaFavoritos = listarPensamentosFavoritos 
+      this.listaFavoritos = listarPensamentosFavoritos
     })
   }
 }
