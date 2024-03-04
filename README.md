@@ -5,7 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 
 
-![Página Web com um mural de frases para criar, editar ou remover pensamentos/citações](https://github.com/cidaluna/memoteca-angular-14/blob/lunabranch/src/assets/memoteca-phrases-quotes-and-thoughts-angular-14-Cida-Luna-It-Developer-Brazil.PNG)
+![Página Web com um mural de frases para criar, editar ou remover pensamentos/citações](./src/assets/memoteca-phrases-quotes-and-thoughts-angular-14-Cida-Luna-It-Developer-Brazil.PNG)
 
 ## Back-end development server
 
