@@ -23,6 +23,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+New `ng build --output-path docs --base-href /memoteca-angular-14/ `to deploy this project to GitHub Pages.
 
 ## Running unit tests
 
