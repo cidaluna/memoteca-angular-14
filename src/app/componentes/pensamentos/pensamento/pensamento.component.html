@@ -2,19 +2,19 @@
 <div class="pensamento {{ pensamento.modelo }} ff-roboto-mono" [ngClass]="larguraPensamento()">
   <!-- Ao utilizar a diretiva [ngClass] estamos delegando ao TS adicionar a classe CSS que atende
        ao tamanho do texto inserido, ou seja, troca o estilo de forma dinâmica -->
-  <img src="../../../../assets/imagens/{{ pensamento.modelo }}.png" alt="Aspas coloridas">
+  <img src="././././assets/imagens/{{ pensamento.modelo }}.png" alt="Aspas coloridas">
   <p class="conteudo">{{ pensamento.conteudo }}</p>
   <p class="autoria"><b>{{ pensamento.autoria }}</b></p>
   <div class="acoes">
     <button class="botao-favorito" (click)="atualizarFavoritos()">
-      <img src="../../../../assets/imagens/icone-favorito-{{ mudarIconeFavorito() }}.png"
+      <img src="././././assets/imagens/icone-favorito-{{ mudarIconeFavorito() }}.png"
         alt="Icone de favorito {{ mudarIconeFavorito() }}">
     </button>
     <button class="botao-editar" routerLink="/pensamentos/editarPensamento/{{pensamento.id}}">
-      <img src="../../../../assets/imagens/icone-editar.png" alt="Icone de editar">
+      <img src="././././assets/imagens/icone-editar.png" alt="Icone de editar">
     </button>
     <button class="botao-excluir" routerLink="/pensamentos/excluirPensamento/{{pensamento.id}}">
-      <img src="../../../../assets/imagens/icone-excluir.png" alt="Icone de excluir">
+      <img src="././././assets/imagens/icone-excluir.png" alt="Icone de excluir">
     </button>
   </div>
 </div>
