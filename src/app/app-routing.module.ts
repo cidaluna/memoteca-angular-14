@@ -14,9 +14,6 @@ const routes: Routes = [
     path:'', pathMatch: 'full', redirectTo: 'listarPensamento'
   },
   {
-    path: '**', pathMatch: 'full', redirectTo: 'listarPensamento'
-  },
-  {
     path: 'criarPensamento', component: CriarPensamentoComponent
   },
   {
