@@ -1,6 +1,6 @@
 main {
     background-image: url("./../assets/imagens/background-completo.png");
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     min-height: 60vh;
   }

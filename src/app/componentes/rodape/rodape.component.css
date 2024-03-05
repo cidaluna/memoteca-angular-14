@@ -1,6 +1,6 @@
 footer {
     background-image: url("./../../../assets/imagens/fundo-rodape.png");
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;

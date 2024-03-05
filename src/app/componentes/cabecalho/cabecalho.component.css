@@ -1,7 +1,7 @@
 .cabecalho {
     background-image: url("./../../../assets/imagens/fundo-cabecalho.png");
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     display: flex;
     align-items: center;
     justify-content: space-between;

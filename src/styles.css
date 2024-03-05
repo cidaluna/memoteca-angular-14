@@ -54,6 +54,7 @@ h2 {
 .botao:hover {
   border: 2px solid #84EEC1;
   color: #84EEC1;
+  cursor: pointer;
 }
 
 @media (min-width: 576px) {
